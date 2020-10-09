@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.squareup.sqldelight:sqlite-driver:1.4.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.sqldelight/sqlite-driver/1.4.3/6b3c78e57c1854540af4c3353d5c1c322e86ea7c/sqlite-driver-1.4.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.sqldelight/sqlite-driver/1.4.3/2d6bd9faa0d558c85cde7cd640211f5723a3501c/sqlite-driver-1.4.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

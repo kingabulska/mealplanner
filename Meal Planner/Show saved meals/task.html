@@ -1,0 +1,68 @@
+<h2><strong style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></strong>Description</h2>
+
+<p>Let's make it easier for the user to navigate the program and find exactly what they need. In this stage, we will work on the command <code class="java">show</code>. The program should prompt the user for the meal category with the message <code class="java">Which category do you want to print (breakfast, lunch, dinner)?</code>. Then, it should search the database and print only the meals from the chosen category. If the requested category does not exist, the program should show an appropriate message.</p>
+
+<h2>Objectives</h2>
+
+<p>1. Prompt the user for the meal category.</p>
+
+<p>2. Select the names of meals of the chosen category.</p>
+
+<p>3. Print <code class="java">Category: &lt;category&gt;</code> followed by the list of meals, each on a new line.</p>
+
+<p>4. If the input category does not exist, print <code class="java">Wrong meal category. Choose from: breakfast, lunch, dinner.</code></p>
+
+<p>5. If the chosen category has no meals, print <code class="java">No meal found.</code></p>
+
+<h2>Example</h2>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<pre><code class="language-no-highlight">What would you like to do (add, show, exit)?
+&gt; add
+Which meal do you want to add (breakfast, lunch, dinner)?
+&gt; lunch
+Meal's name:
+&gt; salad
+Ingredients:
+&gt; lettuce, tomato, onion, cheese, olives
+Meal added!
+What would you like to do (add, show, exit)?
+&gt; add
+Which meal do you want to add (breakfast, lunch, dinner)?
+&gt; breakfast
+Meal's name:
+&gt; oatmeal
+Ingredients:
+&gt; oats, milk, banana, peanut butter
+Meal added!
+What would you like to do (add, show, exit)?
+&gt; add
+Which meal do you want to add (breakfast, lunch, dinner)?
+&gt; lunch
+Meal's name:
+&gt; sushi
+Ingredients:
+&gt; salmon, rice, seaweed, avocado
+Meal added!
+What would you like to do (add, show, exit)?
+&gt; show
+Which category do you want to print? (breakfast, lunch, dinner)?
+&gt; lunch
+Category: lunch
+salad
+sushi
+Which category do you want to print? (breakfast, lunch, dinner)?
+&gt; dinner
+No meals found.
+What would you like to do (add, show, exit)?
+&gt; show
+Which category do you want to print? (breakfast, lunch, dinner)?
+&gt; dessert
+Wrong meal category! Choose from: breakfast, lunch, dinner.
+&gt; breakfast
+Category: breakfast
+oatmeal
+What would you like to do (add, show, exit)?
+&gt; exit
+Bye!</code></pre>

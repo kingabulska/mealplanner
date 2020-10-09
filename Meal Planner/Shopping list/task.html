@@ -1,0 +1,50 @@
+<h2>Description</h2>
+
+<p>Planning the meals is only half of the job: we also need to make sure that all the ingredients are bought ahead of time! In this stage, the program should generate a shopping list containing all the required ingredients for the planned meals. If some ingredient is needed for several meals, put it in the list only once in the following format: <code class="java">ingredient xN</code>, where <em>N</em> is the number of times this ingredient occurs. </p>
+
+<p>Finally, let's add the option of saving the list to the file. Add the command <code class="java">save</code> to the menu. Save the shopping list to the file, unless the plan hasn't been finished: then, print an appropriate message. In the end, don't forget to ask the user for the file name.</p>
+
+<h2>Objectives</h2>
+
+<p>1. Ask the user about filename with the message <code class="java">Write a filename:</code>.</p>
+
+<p>2. <code class="java">Save</code> option is only allowed after the meals have been planned for the week. If the user didn't plan meals, print <code class="java">Save isn't allowed. Plan your meals first.</code>.</p>
+
+<p>3. The format of the shopping list should be as follows:</p>
+
+<pre><code class="language-no-highlight">eggs
+tomato x3
+beef
+broccoli
+salmon
+chicken x2</code></pre>
+
+<p>5. When the list has been saved, print the message <code class="java">Saved!</code>.</p>
+
+<h2>Examples</h2>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<p><strong>Example 1</strong></p>
+
+<p>Note: the example below assumes that the database has quite a few meals stored and that the <code class="java">plan</code> command has already been executed.</p>
+
+<pre><code class="language-no-highlight">What would you like to do (add, show, plan, save, exit)?
+&gt; save
+Write a filename:
+&gt; shoppinglist.txt
+Saved!
+What would you like to do (add, show, plan, save, exit)?
+&gt; exit
+Bye!</code></pre>
+
+<p><strong>Example 2</strong></p>
+
+<p>Note: the example below assumes that the database has quite a few meals stored but the <code class="java">plan</code> command hasn't been executed yet.</p>
+
+<pre><code class="language-no-highlight">What would you like to do (add, show, plan, save, exit)?
+&gt; save
+Save isn't allowed. Plan your meals first.
+What would you like to do (add, show, plan, save, exit)?
+&gt; exit
+Bye!</code></pre>

@@ -1,0 +1,104 @@
+<h2>Description</h2>
+
+<p>If after all the meal options were added the program was to close and lose the information, that would be too bad! In this stage, our program should be able to save all the meals to the database and retrieve them even after the program has been closed and reopened.</p>
+
+<p>There are no changes in the input or the output in this stage.</p>
+
+<h2>Objectives</h2>
+
+<p>1. Use the library SQLDelight to manage the database. For this, you might need to read up on <a target="_blank" href="https://cashapp.github.io/sqldelight/jvm_sqlite/" rel="noopener noreferrer nofollow">getting started on JVM with SQLDelight</a>.</p>
+
+<p>2. Create two tables: one with columns <em>category</em>, <em>meal</em>, and <em>meal_id</em>, and another with columns <em>ingredient</em>,<em> ingredient_id</em>, and <em>meal_id</em>. Note that<em> </em><em>m</em><em>eal_id</em> in both columns should match.</p>
+
+<p>3. Every time the <em>.sq</em> files are changed, you have to generate the Main Database Interface Gradle. You can find it on the right side of the project below the task button —&gt; <em>sqldelight</em> —&gt; <em>generateMainDatabaseInterface.</em></p>
+
+<p>4. Pass the name of the database as a command-line argument, just like in the example below:</p>
+
+<pre><code class="java">&gt; java Main database.db</code></pre>
+
+<p>5. At the end of the main function, close the database connection using the function <code class="java">close()</code> on SqlDriver.</p>
+
+<h2>Examples</h2>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<p><strong>Example 1</strong></p>
+
+<pre><code class="language-no-highlight">What would you like to do (add, show, exit)?
+&gt; add
+Which meal do you want to add (breakfast, lunch, dinner)?
+&gt; lunch
+Meal's name:
+&gt; salad
+Ingredients:
+&gt; lettuce, tomato, onion, cheese, olives
+Meal added!
+What would you like to do (add, show, exit)?
+&gt; add
+Which meal do you want to add (breakfast, lunch, dinner)?
+&gt; breakfast
+Meal's name:
+&gt; oatmeal
+Ingredients:
+&gt; oats, milk, banana, peanut butter
+Meal added!
+What would you like to do (add, show, exit)?
+&gt; show
+Category: lunch
+Name: salad
+Ingredients:
+lettuce
+tomato
+onion
+cheese
+olives
+Category: breakfast
+Name: oatmeal
+Ingredients:
+oats
+milk
+banana
+peanut butter
+What would you like to do (add, show, exit)?
+&gt; exit
+Bye!
+
+What would you like to do (add, show, exit)?
+&gt; show
+Category: lunch
+Name: salad
+Ingredients:
+lettuce
+tomato
+onion
+cheese
+olives
+Category: breakfast
+Name: oatmeal
+Ingredients:
+oats
+milk
+banana
+peanut butter
+What would you like to do (add, show, exit)?
+&gt; exit
+Bye!</code></pre>
+
+<p><strong>Example 2</strong></p>
+
+<pre><code class="language-no-highlight">What would you like to do (add, show, exit)?
+&gt; add
+Which meal do you want to add (breakfast, lunch, dinner)?
+&gt; dessert
+Wrong meal category! Choose from: breakfast, lunch, dinner.
+&gt; lunch
+Meal's name:
+&gt; soup
+Ingredients:
+&gt; carrots, ginger, coconut milk, 123
+Wrong format. Use letters only!
+&gt;carrots, ginger, coconut, milk, curry
+Meal added!
+What would you like to do (add, show, exit)?
+&gt; exit
+Bye!</code></pre>

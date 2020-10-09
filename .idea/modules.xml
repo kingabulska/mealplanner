@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Meal_Planner1.iml" filepath="$PROJECT_DIR$/.idea/modules/Meal_Planner1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Meal Planner/task/Meal_Planner1.Meal_Planner-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Meal Planner/task/Meal_Planner1.Meal_Planner-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Meal Planner/task/Meal_Planner1.Meal_Planner-task.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Meal Planner/task/Meal_Planner1.Meal_Planner-task.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Meal Planner/task/Meal_Planner1.Meal_Planner-task.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Meal Planner/task/Meal_Planner1.Meal_Planner-task.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Meal_Planner1.util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Meal_Planner1.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Meal_Planner1.util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Meal_Planner1.util.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Meal_Planner1.util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Meal_Planner1.util.test.iml" />
+    </modules>
+  </component>
+</project>

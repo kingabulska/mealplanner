@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS plan(
+    day_of_week TEXT NOT NULL,
+    breakfast TEXT NOT NULL,
+    lunch TEXT NOT NULL,
+    dinner TEXT NOT NULL
+    );
+
+selectAll:
+SELECT *
+FROM plan
+;
+
+insert:
+INSERT INTO plan (day_of_week, breakfast, lunch, dinner)
+VALUES (?, ?, ?, ?)
+;
+
+delete:
+DELETE FROM plan
+;
+
+selectMeals:
+SELECT breakfast, dinner, lunch
+FROM plan
+;

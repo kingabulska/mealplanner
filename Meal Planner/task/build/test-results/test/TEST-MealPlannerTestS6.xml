@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MealPlannerTestS6" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-09T18:52:16" hostname="DESKTOP-D34B8UG" time="0.587">
+  <properties/>
+  <testcase name="start" classname="MealPlannerTestS6" time="0.587"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+What would you like to do (add, show, plan, save, exit)?
+> show
+Which category do you want to print? (breakfast, lunch, dinner)?
+> lunch
+No meal found.
+What would you like to do (add, show, plan, save, exit)?
+?[1;31m
+Start test 2?[0m
+What would you like to do (add, show, plan, save, exit)?
+> save
+Write a filename:
+> testFile.txt
+Save isn't allowed. Plan your meals first.
+What would you like to do (add, show, plan, save, exit)?
+?[1;31m
+Start test 3?[0m
+What would you like to do (add, show, plan, save, exit)?
+> add
+Which meal do you want to add (breakfast, lunch, dinner)?
+> breakfast
+Meal's name:
+> cat
+Ingredients:
+> bread, peanut butter, jelly
+Meal added!
+What would you like to do (add, show, plan, save, exit)?
+> add
+Which meal do you want to add (breakfast, lunch, dinner)?
+> breakfast
+Meal's name:
+> ara
+Ingredients:
+> tomato, cheese, bread
+Meal added!
+What would you like to do (add, show, plan, save, exit)?
+> add
+Which meal do you want to add (breakfast, lunch, dinner)?
+> breakfast
+Meal's name:
+> zebra
+Ingredients:
+> muesli, milk, nuts
+Meal added!
+What would you like to do (add, show, plan, save, exit)?
+> add
+Which meal do you want to add (breakfast, lunch, dinner)?
+> lunch
+Meal's name:
+> dog
+Ingredients:
+> ketchup, sausage
+Meal added!
+What would you like to do (add, show, plan, save, exit)?
+> add
+Which meal do you want to add (breakfast, lunch, dinner)?
+> lunch
+Meal's name:
+> mouse
+Ingredients:
+> fish, potato
+Meal added!
+What would you like to do (add, show, plan, save, exit)?
+> add
+Which meal do you want to add (breakfast, lunch, dinner)?
+> dinner
+Meal's name:
+> lion
+Ingredients:
+> carmel, nuts, cream
+Meal added!
+What would you like to do (add, show, plan, save, exit)?
+> plan
+MONDAY
+ara
+cat
+zebra
+Choose BREAKFAST for MONDAY from the list above:
+> ara
+dog
+mouse
+Choose LUNCH for MONDAY from the list above:
+> dog
+lion
+Choose DINNER for MONDAY from the list above:
+> lion
+Yeah! We planned the meals for MONDAY.
+TUESDAY
+ara
+cat
+zebra
+Choose BREAKFAST for TUESDAY from the list above:
+> parrot
+This meal doesn’t exist. Choose a meal from the list above.
+> zebra
+dog
+mouse
+Choose LUNCH for TUESDAY from the list above:
+> mouse
+lion
+Choose DINNER for TUESDAY from the list above:
+> lion
+Yeah! We planned the meals for TUESDAY.
+WEDNESDAY
+ara
+cat
+zebra
+Choose BREAKFAST for WEDNESDAY from the list above:
+> zebra
+dog
+mouse
+Choose LUNCH for WEDNESDAY from the list above:
+> mouse
+lion
+Choose DINNER for WEDNESDAY from the list above:
+> lion
+Yeah! We planned the meals for WEDNESDAY.
+THURSDAY
+ara
+cat
+zebra
+Choose BREAKFAST for THURSDAY from the list above:
+> zebra
+dog
+mouse
+Choose LUNCH for THURSDAY from the list above:
+> mouse
+lion
+Choose DINNER for THURSDAY from the list above:
+> lion
+Yeah! We planned the meals for THURSDAY.
+FRIDAY
+ara
+cat
+zebra
+Choose BREAKFAST for FRIDAY from the list above:
+> zebra
+dog
+mouse
+Choose LUNCH for FRIDAY from the list above:
+> mouse
+lion
+Choose DINNER for FRIDAY from the list above:
+> lion
+Yeah! We planned the meals for FRIDAY.
+SATURDAY
+ara
+cat
+zebra
+Choose BREAKFAST for SATURDAY from the list above:
+> zebra
+dog
+mouse
+Choose LUNCH for SATURDAY from the list above:
+> mouse
+lion
+Choose DINNER for SATURDAY from the list above:
+> lion
+Yeah! We planned the meals for SATURDAY.
+SUNDAY
+ara
+cat
+zebra
+Choose BREAKFAST for SUNDAY from the list above:
+> zebra
+dog
+mouse
+Choose LUNCH for SUNDAY from the list above:
+> mouse
+lion
+Choose DINNER for SUNDAY from the list above:
+> lion
+Yeah! We planned the meals for SUNDAY.
+MONDAY
+Breakfast: ara
+Lunch: dog
+Dinner: lion
+
+TUESDAY
+Breakfast: zebra
+Lunch: mouse
+Dinner: lion
+
+WEDNESDAY
+Breakfast: zebra
+Lunch: mouse
+Dinner: lion
+
+THURSDAY
+Breakfast: zebra
+Lunch: mouse
+Dinner: lion
+
+FRIDAY
+Breakfast: zebra
+Lunch: mouse
+Dinner: lion
+
+SATURDAY
+Breakfast: zebra
+Lunch: mouse
+Dinner: lion
+
+SUNDAY
+Breakfast: zebra
+Lunch: mouse
+Dinner: lion
+
+What would you like to do (add, show, plan, save, exit)?
+> save
+Write a filename:
+> testFile.txt
+Saved correctly!
+What would you like to do (add, show, plan, save, exit)?
+> exit
+Bye!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

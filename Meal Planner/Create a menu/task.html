@@ -1,0 +1,107 @@
+<h2>Description</h2>
+
+<p>One meal is not going to get you far. Let's create a menu that allows the user to add several meals and show them together with their properties. For this, we need to add a few commands.</p>
+
+<ul>
+    <li>The command <code class="java">add</code> should start the meal input process and prompt the user for the meal's properties.</li>
+    <li>The command <code class="java">show</code> should print the list of all the saved meals with their names, categories, and ingredients.</li>
+    <li>After executing <code class="java">add</code> or <code class="java">show</code>, the program should ask the user about the next action.</li>
+    <li>The program should run until the user inputs <code class="java">exit</code>, which terminates the program.</li>
+</ul>
+
+<p>In this stage, your program should also check the user input: what if the user entered something wrong? </p>
+
+<ul>
+    <li>If the input meal category is something other than breakfast, lunch, or dinner, print <code class="java">Wrong meal category! Choose from: breakfast, lunch, dinner.</code> </li>
+    <li>If the meal's name or ingredients have the wrong format (for example, if they contain numbers), print <code class="java">Wrong format. Use letters only!</code>.</li>
+</ul>
+
+<h2>Objectives</h2>
+
+<ol>
+    <li>
+        <p>Make an infinite loop that can only be terminated with the <code class="java">exit</code> command.</p>
+    </li>
+    <li>
+        <p>The program should prompt the user to choose the action with the message <code class="java">What would you like to do (add, show, exit)?</code></p>
+    </li>
+    <li>
+        <p>After the command has been processed, the user should be prompted for another action.</p>
+    </li>
+    <li>
+        <p>Make sure that the input and output format is correct.</p>
+    </li>
+    <li>
+        <p>If the user asks the program to <code class="java">show</code> meals before any were added, print <code class="java">No meals saved. Add a meal first.</code></p>
+    </li>
+    <li>
+        <p>After the <code class="java">exit</code> command, print <code class="java">Bye!</code> and end the program.</p>
+    </li>
+</ol>
+
+<h2>Examples</h2>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<p>Example 1</p>
+
+<pre><code class="language-no-highlight">What would you like to do (add, show, exit)?
+&gt; add
+Which meal do you want to add (breakfast, lunch, dinner)?
+&gt; lunch
+Meal's name:
+&gt; salad
+Ingredients:
+&gt; lettuce, tomato, onion, cheese, olives
+Meal added correctly!
+What would you like to do (add, show, exit)?
+&gt; add
+Which meal do you want to add (breakfast, lunch, dinner)?
+&gt; breakfast
+Meal's name:
+&gt; oatmeal
+Ingredients:
+&gt; oats, milk, banana, peanut butter
+Meal added!
+What would you like to do (add, show, exit)?
+&gt; show
+Category: lunch
+Name: salad
+Ingredients:
+lettuce
+tomato
+onion
+cheese
+olives
+Category: breakfast
+Name: oatmeal
+Ingredients:
+oats
+milk
+banana
+peanut butter
+What would you like to do (add, show, exit)?
+&gt; exit
+Bye!</code></pre>
+
+<p><strong>Example 2</strong></p>
+
+<pre><code class="language-no-highlight">What would you like to do (add, show, exit)?
+&gt; show
+No meals saved. Add a meal first.
+What would you like to do (add, show, exit)?
+&gt; add
+Which meal do you want to add (breakfast, lunch, dinner)?
+&gt; dessert
+Wrong meal category! Choose from: breakfast, lunch, dinner.
+&gt; lunch
+Meal's name:
+&gt; soup
+Ingredients:
+&gt; carrots, ginger, coconut milk, 123
+Wrong format. Use letters only!
+&gt; carrots, ginger, coconut, milk, curry
+Meal added!
+What would you like to do (add, show, exit)?
+&gt; exit
+Bye!</code></pre>

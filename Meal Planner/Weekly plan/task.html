@@ -1,0 +1,226 @@
+<h2>Description</h2>
+
+<p>A good planner plans for the week ahead! Let's help our users plan their meals for the entire week. For this, we will add a command <code class="java">plan</code> to our menu. The program should print the first day of week – Monday –  and then print the list of all breakfast meals stored in the database in alphabetical order. Then, the program should prompt the user to pick a meal option with the message <code class="java">Choose breakfast for Monday from the list above:</code>. </p>
+
+<p>After the user provided a name, the program should verify it. If the database does not contain the meal with such a name, print <code class="java">This meal doesn’t exist. Choose a meal from the list above.</code>. If the user input is correct, move on to the next category – lunch – and then to dinner. After the user has picked the meal options for all three categories, print <code class="java">Yeah! We planned the meals for Monday.</code>.</p>
+
+<p>Repeat these steps for the rest of the days all the way through Sunday. In the end, print the whole weekly plan.</p>
+
+<h2>Objectives</h2>
+
+<p>1. Insert an empty line after one day's meals have been planed.</p>
+
+<p>2. The format should be as follows:</p>
+
+<pre><code class="language-no-highlight">Monday
+Breakfast: &lt;meal's name&gt;
+Lunch: &lt;meal's name&gt;
+Dinner: &lt;meal's name&gt;
+
+Tuesday etc.</code></pre>
+
+<h2>Example</h2>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<p>Note: the example below assumes that the database already has quite a few meals stored.</p>
+
+<pre><code class="language-no-highlight">What would you like to do (add, show, plan, exit)?
+&gt; plan
+Monday
+oatmeal
+sandwich
+scrambled eggs
+yogurt
+Choose breakfast for Monday from the list above:
+&gt; yogurt
+avocado egg salad
+chicken salad
+sushi
+tomato salad
+wraps
+Choose lunch for Monday from the list above:
+&gt; tomato salad
+beef with broccoli
+pesto chicken
+pizza
+ramen
+tomato soup
+Choose dinner for Monday from the list above:
+&gt; spaghetti
+This meal doesn’t exist. Choose a meal from the list above.
+&gt; ramen
+Yeah! We planned the meals for Monday.
+
+Tuesday
+oatmeal
+sandwich
+scrambled eggs
+yogurt
+Choose breakfast for Tuesday from the list above:
+&gt; oatmeal
+avocado egg salad
+chicken salad
+sushi
+tomato salad
+wraps
+Choose lunch for Tuesday from the list above:
+&gt; wraps
+beef with broccoli
+pesto chicken
+pizza
+ramen
+tomato soup
+Choose dinner for Tuesday from the list above:
+&gt; ramen
+Yeah! We planned the meals for Tuesday.
+
+Wednesday
+oatmeal
+sandwich
+scrambled eggs
+yogurt
+Choose breakfast for Wednesday from the list above:
+&gt; sandwich
+avocado egg salad
+chicken salad
+sushi
+tomato salad
+wraps
+Choose lunch for Wednesday the list above:
+&gt; avocado egg salad
+beef with broccoli
+pesto chicken
+pizza
+ramen
+tomato soup
+Choose dinner for Wednesday the list above:
+&gt; pesto chicken
+Yeah! We planned the meals for Wednesday.
+
+Thursday
+oatmeal
+sandwich
+scrambled eggs
+yogurt
+Choose breakfast for Thursday from the list above:
+&gt; oatmeal
+avocado egg salad
+chicken salad
+sushi
+tomato salad
+wraps
+Choose lunch for Thursday from the list above:
+&gt; chicken salad
+beef with broccoli
+pesto chicken
+pizza
+ramen
+tomato soup
+Choose dinner for Thursday from the list above:
+&gt; tomato soup
+Yeah! We planned the meals for Thursday.
+
+Friday
+oatmeal
+sandwich
+scrambled eggs
+yogurt
+Choose breakfast for Friday from the list above:
+&gt; yogurt
+avocado egg salad
+chicken salad
+sushi
+tomato salad
+wraps
+Choose lunch for Friday from the list above:
+&gt; sushi
+beef with broccoli
+pesto chicken
+pizza
+ramen
+tomato soup
+Choose dinner for Friday from the list above:
+&gt; pizza
+Yeah! We planned the meals for Friday.
+
+Saturday
+oatmeal
+sandwich
+scrambled eggs
+yogurt
+Choose breakfast for Saturday from the list above:
+&gt; scrambled eggs
+avocado egg salad
+chicken salad
+sushi
+tomato salad
+wraps
+Choose lunch for Saturday from the list above:
+&gt; wraps
+beef with broccoli
+pesto chicken
+pizza
+ramen
+tomato soup
+Choose dinner for Saturday from the list above:
+&gt; pesto chicken
+Yeah! We planned the meals for Saturday.
+
+Sunday
+oatmeal
+sandwich
+scrambled eggs
+yogurt
+Choose breakfast for Sunday from the list above:
+&gt; scrambled eggs
+avocado egg salad
+chicken salad
+sushi
+tomato salad
+wraps
+Choose lunch for Sunday from the list above:
+&gt; tomato salad
+beef with broccoli
+pesto chicken
+pizza
+ramen
+tomato soup
+Choose dinner for Sunday from the list above:
+&gt; beef with broccoli
+Yeah! We planned the meals for Sunday.
+
+Monday
+Breakfast: yogurt
+Lunch: tomato salad
+Dinner: ramen
+
+Tuesday
+Breakfast: oatmeal
+Lunch: wraps
+Dinner: ramen
+
+Wednesday
+Breakfast: sandwich
+Lunch: avocado egg salad
+Dinner: pesto chicken
+
+Thursday
+Breakfast: oatmeal
+Lunch: chicken salad
+Dinner: tomato soup
+
+Friday
+Breakfast: yogurt
+Lunch: sushi
+Dinner: pizza
+
+Saturday
+Breakfast: scrambled eggs
+Lunch: wraps
+Dinner: pesto chicken
+
+Sunday
+Breakfast: scrambled eggs
+Lunch: tomato salad
+Dinner: beef with broccoli</code></pre>

@@ -1,0 +1,33 @@
+import mealplanner.Category;
+
+CREATE TABLE IF NOT EXISTS categories (
+    category TEXT AS Category NOT NULL,
+    meal_name TEXT NOT NULL,
+    id_meal INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT
+);
+
+selectAll:
+SELECT *
+FROM categories
+;
+
+insert:
+INSERT INTO categories (category, meal_name)
+VALUES (?, ?)
+;
+
+sellectLastRowId:
+SELECT last_insert_rowid()
+;
+
+sellectByCategory:
+SELECT *
+FROM categories
+WHERE category = ?
+;
+
+selectIdByName:
+SELECT id_meal
+FROM categories
+WHERE meal_name = ?
+;

@@ -1,0 +1,105 @@
+buildscript {
+    ext.kotlin_version = '1.4.10'
+
+    repositories {
+        mavenCentral()
+        google()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.squareup.sqldelight:gradle-plugin:1.4.3'
+    }
+}
+
+
+
+def printOutput(def output) {
+    return tasks.create("printOutput") {
+        for (line in output.toString().readLines()) {
+            println "#educational_plugin" + line
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'application'
+    apply plugin: 'java'
+    apply plugin: 'kotlin'
+    apply plugin: 'com.squareup.sqldelight'
+
+    sourceCompatibility = 1.8
+
+    sqldelight {
+        Database { // This will be the name of the generated database class.
+            packageName = "mealplanner"
+        }
+    }
+
+    repositories {
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+        implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+        implementation "com.squareup.sqldelight:sqlite-driver:1.4.3"
+        testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
+    }
+
+    compileKotlin.destinationDir = compileJava.destinationDir
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+
+    sourceSets {
+        main {
+            kotlin.srcDir 'src'
+            java.srcDir 'src'
+        }
+        test {
+            kotlin.srcDir 'test'
+            java.srcDir 'test'
+        }
+    }
+
+    mainClassName = project.hasProperty("mainClass") ? project.getProperty("mainClass") : ""
+    test {
+        outputs.upToDateWhen { false }
+        afterTest { TestDescriptor test, TestResult result ->
+            if (result.resultType == TestResult.ResultType.FAILURE) {
+                def message = result.exception?.message ?: "Wrong answer"
+                def lines = message.readLines()
+                println "#educational_plugin FAILED + " + lines[0]
+                lines.subList(1, lines.size()).forEach { line ->
+                  println "#educational_plugin" + line
+                }
+                // we need this to separate output of different tests
+                println()
+            }
+        }
+    }
+
+    def runOutput = new ByteArrayOutputStream()
+    tasks.run.setStandardOutput(runOutput)
+    tasks.run.doLast { printOutput(runOutput) }
+}
+
+project(':util') {
+    dependencies {
+        compile group: 'junit', name: 'junit', version: '4.12'
+    }
+}
+
+configure(subprojects.findAll {it.name != 'util'}) {
+  dependencies {
+    compile project(':util').sourceSets.main.output
+    testCompile project(':util').sourceSets.test.output
+  }
+}
+

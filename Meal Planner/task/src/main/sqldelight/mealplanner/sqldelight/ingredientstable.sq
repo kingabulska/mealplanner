@@ -1,0 +1,20 @@
+import mealplanner.Ingredient;
+
+CREATE TABLE IF NOT EXISTS ingredients (
+    ingredient_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    ingredient_name TEXT NOT NULL,
+    id_meal INTEGER NOT NULL,
+    CONSTRAINT fk_meal FOREIGN KEY (id_meal)
+    REFERENCES categories(id_meal)
+);
+
+insert:
+INSERT INTO ingredients (ingredient_name, id_meal)
+VALUES (?, ?)
+;
+
+selectAllIngredientForOneMeal:
+SELECT ingredient_name
+FROM ingredients
+WHERE id_meal = ?
+;

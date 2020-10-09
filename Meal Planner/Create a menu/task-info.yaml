@@ -1,0 +1,179 @@
+type: edu
+files:
+- name: src/mealplanner/Main.kt
+  visible: true
+  text: |-
+    package mealplanner
+
+    fun main() {
+        // write your code here
+    }
+  learner_created: false
+- name: test/MealPlannerTest.kt
+  visible: false
+  text: |
+    import org.hyperskill.hstest.dynamic.input.DynamicTestingMethod
+    import org.hyperskill.hstest.exception.outcomes.TestPassed
+    import org.hyperskill.hstest.testcase.CheckResult
+    import org.hyperskill.hstest.testcase.TestCase
+    import org.hyperskill.hstest.testing.TestedProgram
+
+    class MealPlannerTest() : KotlinTest<String>() {
+        @DynamicTestingMethod
+        open fun test(): CheckResult? {
+
+            val main = TestedProgram(classUnderTest)
+
+            val output0 = main.start().toLowerCase()
+
+            if (!output0.contains("(add, show, exit)?")) {
+                return CheckResult.wrong(
+                        "Your program should ask the user " +
+                                "what user like to do: \"(add, show, exit)?\"")
+            }
+            val output = main.execute("add")
+            if (!output.contains("(breakfast, lunch, dinner)?")) {
+
+                return CheckResult.wrong(
+                        "Your program should ask the user " +
+                                "about meal category: \"(breakfast, lunch, dinner)?\"")
+            }
+            var output2 = main.execute("lunch")
+            output2 = output2.toLowerCase()
+
+            if (!output2.contains("name")) {
+
+                return CheckResult.wrong("Your output should contain" +
+                        "\"Meal's name:\"!")
+            }
+            if (output2.contains("Meal's name:")) {
+
+                throw TestPassed()
+            }
+            var output3 = main.execute("sushi")
+            output3 = output3.toLowerCase()
+
+            if (!output3.contains("ingredients:")) {
+                return CheckResult.wrong("Your output should contain" +
+                        "\"Ingredients:\"!")
+            }
+
+            var output4 = main.execute("salmon, rice, avocado")
+
+            if (output4 != "Meal added!\nWhat would you like to do (add, show, exit)?\n") {
+                return CheckResult.wrong("You miss something, check your code.")
+            }
+
+            var output5 = main.execute("show")
+
+            if (!output5.contains("Category:") && !output4.contains("Name") &&
+                    !output5.contains("Ingredients:")) {
+                return CheckResult.wrong("Wrong output format!")
+            }
+
+            if (output5.trim { it <= ' ' }.split("\n").toTypedArray().size != 7) {
+                return CheckResult.wrong("Wrong output format!")
+            }
+
+            val output6 = main.execute("exit")
+            if (output6 != "Bye!\n") {
+                return  CheckResult.wrong("Your program should print \"Bye!\" at the end.")
+            }
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTestingMethod
+        open fun test2(): CheckResult? {
+            val main = TestedProgram(classUnderTest)
+
+            val output0 = main.start().toLowerCase()
+
+            if (!output0.contains("(add, show, exit)?")) {
+                return CheckResult.wrong(
+                        "Your program should ask the user " +
+                                "what user like to do: \"(add, show, exit)?\"")
+            }
+            var output = main.execute("show")
+
+            if (!output.contains("No meals saved. Add meal first.\n")) {
+                return CheckResult.wrong("Wrong answer on command \"show\"")
+            }
+
+            output = main.execute("show")
+
+            if (!output.contains("No meals saved. Add meal first.\n")) {
+                return CheckResult.wrong("Wrong answer on command \"show\"")
+            }
+
+            main.execute("add")
+            main.execute("dinner")
+            main.execute("pumpkin soup")
+            main.execute("pumpkin, coconut milk, curry, carrots")
+
+            main.execute("add")
+
+            val output1 = main.execute("dinn")
+            if (output1 != "Wrong meal category! Choose from: breakfast, lunch, dinner.\n") {
+                return CheckResult.wrong("Your output should catch wrong meal's category.")
+            }
+            main.execute("lunch")
+
+            val output2 = main.execute("chicken salad123")
+            if (!output2.contains("Wrong format. Use letters only!\n")) {
+                return CheckResult.wrong("Your output should catch wrong input format.")
+            }
+
+            main.execute("chicken salad")
+            val output3 = main.execute("chicken1, lettuce, tomato, olives, 56")
+
+            if (!output3.contains("Wrong format. Use letters only!\n")) {
+                return CheckResult.wrong("Your output should catch wrong input format.")
+            }
+            main.execute("chicken, lettuce, tomato, olives")
+
+            val output4 = main.execute("show")
+
+            if (!output4.contains("Category:") && !output4.contains("Name") &&
+                    !output4.contains("Ingredients:")) {
+                return CheckResult.wrong("Wrong output format!")
+            }
+
+            if (output4.trim { it <= ' ' }.split("\n").toTypedArray().size != 15) {
+                return CheckResult.wrong("Wrong output format!")
+            }
+
+            val output5 = main.execute("exit")
+            if (output5 != "Bye!\n") {
+                return  CheckResult.wrong("Your program should print \"Bye!\" at the end.")
+            }
+
+
+            return CheckResult.correct();
+        }
+
+    }
+  learner_created: false
+- name: test/KotlinTest.java
+  visible: false
+  text: |-
+    import mealplanner.MainKt;
+    import org.hyperskill.hstest.stage.StageTest;
+
+    public abstract class KotlinTest<T> extends StageTest<T> {
+
+        protected final Class<?> classUnderTest;
+
+        public KotlinTest() {
+            super(MainKt.class);
+            classUnderTest = MainKt.class;
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/projects/129/stages/687/implement
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/129/stages/687/implement">JetBrains
+    Academy</a>
+  time: Fri, 09 Oct 2020 18:27:19 UTC
+record: 2

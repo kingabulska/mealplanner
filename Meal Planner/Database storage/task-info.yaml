@@ -1,0 +1,124 @@
+type: edu
+files:
+- name: src/mealplanner/Main.kt
+  visible: true
+  text: |-
+    package mealplanner
+
+    fun main() {
+        // write your code here
+    }
+  learner_created: false
+- name: test/KotlinTest.java
+  visible: false
+  text: |-
+    import mealplanner.MainKt;
+    import org.hyperskill.hstest.stage.StageTest;
+
+    public abstract class KotlinTest<T> extends StageTest<T> {
+
+        protected final Class<?> classUnderTest;
+
+        public KotlinTest() {
+            super(MainKt.class);
+            classUnderTest = MainKt.class;
+        }
+    }
+  learner_created: false
+- name: test/MealPlannerTest.kt
+  visible: false
+  text: |-
+    import org.hyperskill.hstest.dynamic.input.DynamicTestingMethod
+    import org.hyperskill.hstest.exception.outcomes.TestPassed
+    import org.hyperskill.hstest.testcase.CheckResult
+    import org.hyperskill.hstest.testing.TestedProgram
+    import java.io.File
+
+    class MealPlannerTest() : KotlinTest<String>() {
+
+        private val dbName = "test.db"
+        @DynamicTestingMethod
+        open fun test(): CheckResult? {
+            val main = TestedProgram(classUnderTest)
+
+            main.start(dbName)
+            val output = main.execute("show")
+
+            if (output != "No meals saved. Add meal first.\n" +
+                    "What would you like to do (add, show, exit)?\n") {
+                return CheckResult.wrong("Wrong answer on  \"show\" command.")
+            }
+            return CheckResult.correct()
+        }
+
+        @DynamicTestingMethod
+        open fun test2(): CheckResult? {
+
+            val main = TestedProgram(classUnderTest)
+
+            main.start(dbName)
+            main.execute("add")
+            main.execute("breakfast")
+            main.execute("abracadabra")
+            val output = main.execute("eggs, salmon, broccoli, cheese")
+
+            if (output != "Meal added!\nWhat would you like to do (add, show, exit)?\n") {
+                return CheckResult.wrong("Wrong command ending.")
+            }
+            main.execute("exit")
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTestingMethod
+        open fun test3(): CheckResult? {
+            val main = TestedProgram(classUnderTest)
+
+            main.start(dbName)
+            val output = main.execute("show").split("\n").reversed()
+
+            var isOk = true
+
+            if (output[2] != "cheese" || output[3] != "broccoli"
+                    || output[4] != "salmon" || output[5] != "eggs") {
+                isOk = false
+            }
+            if (output[7] != "Name: abracadabra") {
+                isOk = false
+            }
+
+            if(!isOk) {
+                return CheckResult.wrong("Database didn't persist data before program terminating.")
+            }
+
+            main.execute("exit")
+
+            val file = File(dbName)
+            file.delete()
+
+            return CheckResult.correct()
+        }
+    }
+  learner_created: false
+- name: src/mealplanner/Category.kt
+  visible: true
+  learner_created: true
+- name: src/mealplanner/Ingredient.kt
+  visible: true
+  learner_created: true
+- name: src/mealplanner/Meal.kt
+  visible: true
+  learner_created: true
+- name: src/main/sqldelight/mealplanner/sqldelight/categoriestable.sq
+  visible: true
+  learner_created: true
+- name: src/main/sqldelight/mealplanner/sqldelight/ingredientstable.sq
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/projects/129/stages/688/implement
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/129/stages/688/implement">JetBrains
+    Academy</a>
+  time: Fri, 09 Oct 2020 18:44:11 UTC
+record: 3

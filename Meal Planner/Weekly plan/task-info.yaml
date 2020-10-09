@@ -1,0 +1,237 @@
+type: edu
+files:
+- name: src/mealplanner/Main.kt
+  visible: true
+  text: |-
+    package mealplanner
+
+    fun main() {
+        // write your code here
+    }
+  learner_created: false
+- name: test/KotlinTest.java
+  visible: false
+  text: |-
+    import mealplanner.MainKt;
+    import org.hyperskill.hstest.stage.StageTest;
+
+    public abstract class KotlinTest<T> extends StageTest<T> {
+
+        protected final Class<?> classUnderTest;
+
+        public KotlinTest() {
+            super(MainKt.class);
+            classUnderTest = MainKt.class;
+        }
+    }
+  learner_created: false
+- name: test/MealPlannerTest.kt
+  visible: false
+  text: |-
+    import org.hyperskill.hstest.dynamic.input.DynamicTestingMethod
+    import org.hyperskill.hstest.testcase.CheckResult
+    import org.hyperskill.hstest.testing.TestedProgram
+    import java.io.File
+
+    class MealPlannerTest() : KotlinTest<String>() {
+
+        private val dbName = "test.db"
+
+        @DynamicTestingMethod
+        open fun test(): CheckResult? {
+            val main = TestedProgram(classUnderTest)
+
+            main.start(dbName)
+            main.execute("show")
+            val output = main.execute("lunch")
+
+
+            if (output != "No meal found.\n" +
+                    "What would you like to do (add, show, plan, exit)?\n") {
+                return CheckResult.wrong("Wrong answer on  \"show\" command.")
+            }
+            return CheckResult.correct()
+        }
+
+        @DynamicTestingMethod
+        open fun test2(): CheckResult? {
+            val main = TestedProgram(classUnderTest)
+
+            main.start(dbName)
+            main.execute("add")
+            main.execute("breakfast")
+            main.execute("cat")
+            main.execute("bread, peanut butter, jelly")
+
+            main.execute("add")
+            main.execute("breakfast")
+            main.execute("ara")
+            main.execute("tomato, cheese, bread")
+
+            main.execute("add")
+            main.execute("breakfast")
+            main.execute("zebra")
+            main.execute("muesli, milk, nuts")
+
+            main.execute("add")
+            main.execute("lunch")
+            main.execute("dog")
+            main.execute("ketchup, sausage")
+
+            main.execute("add")
+            main.execute("lunch")
+            main.execute("mouse")
+            main.execute("fish, potato")
+
+            main.execute("add")
+            main.execute("dinner")
+            main.execute("lion")
+            main.execute("carmel, nuts, cream")
+
+            val output = main.execute("plan").split("\n")
+            if (output[1] != "ara" && output[2] != "cat" && output[3] != "zebra") {
+                return CheckResult.wrong("List of meals not sorted.")
+            }
+
+            main.execute("ara")
+            main.execute("dog")
+            val output2 = main.execute("lion").toLowerCase()
+            if (!output2.contains("yeah! we planned the meals for monday.\n") ) {
+                return CheckResult.wrong("Wrong answer on \"plan\" command.")
+            }
+
+            val output3 = main.execute("parrot")
+            if (output3 != "This meal doesn’t exist. Choose a meal from the list above.\n") {
+                return CheckResult.wrong("Wrong answer on \"plan\" command.")
+            }
+            repeat(5) {
+                main.execute("zebra")
+                main.execute("mouse")
+                main.execute("lion")
+            }
+            main.execute("zebra")
+            main.execute("mouse")
+            val output4 = main.execute("lion").split("\n")
+
+            if(output[0].toLowerCase() != "yeah! we planned the meals for sunday." &&
+                    output4[1].toLowerCase() != "monday" && output4[2].toLowerCase() != "breakfast: ara"
+                    && output4[3].toLowerCase() != "lunch: dog" && output4[4].toLowerCase() != "dinner: lion") {
+                return CheckResult.wrong("Wrong answer on \"plan\" command.")
+            }
+
+            main.execute("exit")
+            main.stop()
+
+            val file = File(dbName)
+            file.delete()
+
+            return CheckResult.correct()
+        }
+    }
+  learner_created: false
+- name: src/mealplanner/Meal.kt
+  visible: true
+  text: |-
+    package mealplanner
+
+    import mealplanner.Category
+    import mealplanner.Ingredient
+
+    class Meal(
+            val name: String,
+            val category: Category,
+            val ingredients: MutableList<Ingredient>
+    ) {
+    }
+  learner_created: true
+- name: src/mealplanner/Ingredient.kt
+  visible: true
+  text: |-
+    package mealplanner
+
+    class Ingredient(val name: String) {
+    }
+  learner_created: true
+- name: src/main/sqldelight/mealplanner/sqldelight/categoriestable.sq
+  visible: true
+  text: |
+    import mealplanner.Category;
+
+    CREATE TABLE IF NOT EXISTS categories (
+        category TEXT AS Category NOT NULL,
+        meal_name TEXT NOT NULL,
+        id_meal INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT
+    );
+
+    selectAll:
+    SELECT *
+    FROM categories
+    ;
+
+    insert:
+    INSERT INTO categories (category, meal_name)
+    VALUES (?, ?)
+    ;
+
+    sellectLastRowId:
+    SELECT last_insert_rowid()
+    ;
+
+    sellectByCategory:
+    SELECT *
+    FROM categories
+    WHERE category = ?
+    ;
+  learner_created: true
+- name: src/mealplanner/Category.kt
+  visible: true
+  text: |
+    package mealplanner
+
+    enum class Category ( val category: String){
+        BREAKFAST("breakfast"),
+        LUNCH("lunch"),
+        DINNER("dinner");
+
+        companion object {
+            fun fromString(string: String): Category {
+                return values().first() {it.category == string}
+            }
+        }
+
+    }
+  learner_created: true
+- name: src/main/sqldelight/mealplanner/sqldelight/ingredientstable.sq
+  visible: true
+  text: |-
+    import mealplanner.Ingredient;
+
+    CREATE TABLE IF NOT EXISTS ingredients (
+        ingredient_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        ingredient_name TEXT NOT NULL,
+        id_meal INTEGER NOT NULL,
+        CONSTRAINT fk_meal FOREIGN KEY (id_meal)
+        REFERENCES categories(id_meal)
+    );
+
+    insert:
+    INSERT INTO ingredients (ingredient_name, id_meal)
+    VALUES (?, ?)
+    ;
+
+    selectAllIngredientForOneMeal:
+    SELECT ingredient_name
+    FROM ingredients
+    WHERE id_meal = ?
+    ;
+  learner_created: true
+- name: src/main/sqldelight/mealplanner/sqldelight/plantable.sq
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/projects/129/stages/689/implement
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/129/stages/689/implement">JetBrains
+    Academy</a>
+  time: Fri, 09 Oct 2020 18:49:07 UTC
+record: 5
